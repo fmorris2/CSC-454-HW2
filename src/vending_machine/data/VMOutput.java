@@ -6,5 +6,5 @@ public enum VMOutput
 	DIME,
 	QUARTER,
 	COFFEE,
-	NOTHING
+	NOTHING;
 }

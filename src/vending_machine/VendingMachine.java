@@ -1,45 +1,7 @@
 package vending_machine;
 
-public class VendingMachine {
-	private static final int STARTING_COIN_AMOUNT = 5;
-	
-	private int nickels, dimes, quarters;
-	private double value;
-	private boolean isChangePressed;
-	
-	public VendingMachine() {
-		nickels = STARTING_COIN_AMOUNT;
-		dimes = STARTING_COIN_AMOUNT;
-		quarters = STARTING_COIN_AMOUNT;
-	}
-
-	public int getNickels() {
-		return nickels;
-	}
-
-	public int getDimes() {
-		return dimes;
-	}
-
-	public int getQuarters() {
-		return quarters;
-	}
-
-	public double getValue() {
-		return value;
-	}
-	
-	public void addToValue(double amount) {
-		value += amount;
-	}
-	
-	public void removeFromValue(double amount) {
-		value -= amount;
-	}
-	
-	public boolean isChangePressed() {
-		return isChangePressed;
-	}
+public class VendingMachine extends ReadableVendingMachine {
+	public static double COFFEE_PRICE = 1.00;
 	
 	public void setChangePressed(boolean isChangePressed) {
 		this.isChangePressed = isChangePressed;
@@ -47,25 +9,31 @@ public class VendingMachine {
 	
 	public void addNickel() {
 		nickels++;
+		value += .05;
 	}
 	
 	public void addDime() {
 		dimes++;
+		value += .10;
 	}
 	
 	public void addQuarter() {
 		quarters++;
+		value += .25;
 	}
 	
 	public void removeNickel() {
 		nickels--;
+		value -= .05;
 	}
 	
 	public void removeDime() {
 		dimes--;
+		value -= .10;
 	}
 	
 	public void removeQuarter() {
 		quarters--;
+		value -= .25;
 	}
 }

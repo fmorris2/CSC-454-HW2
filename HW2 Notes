@@ -1,0 +1,47 @@
+delta function (state change): X (input set) x (cross product) S -> S
+lambda function (output function): S -> y
+
+Moore Machine: INPUT MUST NOT AFFECT OUTPUT
+Must execute lambda before delta every time
+
+Vending machine specific info:
+CHANGE BUTTON TAKES PRECEDENCE OVER ANY OTHER ACTION -> GIVES BACK THE ENTIRE VALUE
+
+Change combination function:
+Knapsack problem -> NP-Complete
+
+
+t  |  x   |  s  			|  y
+
+0  |   	  | q=5,d=5,n=5,c=F,v=0 	|
+
+1  |  qq  | q=7,d=5,n=5,c=F,v=50 | nothing <-- Output determined by tick 0 state
+
+2  |  qq  | q=9,d=5,n=5,c=F,v=100 | nothing <-- Output determined by tick 1 state
+
+3  | wait | q=9,d=5,n=5,c=F,v=0 | coffee
+
+4  | qqqqc | q=13,d=5,n=5,c=T,v=100 | nothing
+
+5  | wait | q=9,d=5,n=5,c=F,v=0 | qqqq 
+
+
+How to break the machine:
+
+t	|	x	|	s		|	y	|
+
+0	|		|q=0,d=0,n=0,c=F,v=0	|
+
+1	|	qqqddd	|q=3,d=3,n=0,c=F,v=105	|	nothing	|
+
+2	|	c	|q=3,d=3,n=0,c=T,v=5	|	coffee	|
+
+3	|	w	|q=3,d=3,n=-1,c=F,v=0	|	n
+
+
+BROKEN! MACHINE CAN'T PRODUCE A NICKEL IN THIS CASE, EVEN THOUGH IT NEEDS TO!
+
+Potential solutions:
+	-Don't dispense coffee if v > 100 and we can't make change for the remainder
+	-Dispense coffee and don't dispense the change
+	-*Throw an exception when a situation like this arises, and let the vending machine crash*

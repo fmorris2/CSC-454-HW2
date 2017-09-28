@@ -9,7 +9,7 @@ public enum VMInput
 	NICKEL('n'),
 	DIME('d'),
 	QUARTER('q'),
-	CANCEL('c'),
+	CHANGE('c'),
 	WAIT('w');
 	
 	public static final List<Character> INPUT_SYMBOLS = getInputSymbols();
