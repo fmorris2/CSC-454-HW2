@@ -15,7 +15,7 @@ public class ChangeUtils {
 	public static VMOutput[] calculateChange(ReadableVendingMachine vendingMachine) {
 		totalChangeValueNeeded = vendingMachine.getValue();
 		List<VMOutput> change = calculateChangeForValue(vendingMachine);
-		return change.size() == 0 ? new VMOutput[]{VMOutput.NOTHING} : change.toArray(new VMOutput[change.size()]);
+		return change.toArray(new VMOutput[change.size()]);
 	}
 	
 	private static List<VMOutput> calculateChangeForValue(ReadableVendingMachine vendingMachine) {
