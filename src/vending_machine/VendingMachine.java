@@ -1,39 +1,22 @@
 package vending_machine;
 
+import vending_machine.data.VMInput;
+
 public class VendingMachine extends ReadableVendingMachine {
-	public static double COFFEE_PRICE = 1.00;
+	public static double COFFEE_PRICE = 100;
 	
 	public void setChangePressed(boolean isChangePressed) {
 		this.isChangePressed = isChangePressed;
 	}
 	
-	public void addNickel() {
-		nickels++;
-		value += .05;
+	public void purchaseCoffee() {
+		value -= COFFEE_PRICE;
 	}
 	
-	public void addDime() {
-		dimes++;
-		value += .10;
-	}
-	
-	public void addQuarter() {
-		quarters++;
-		value += .25;
-	}
-	
-	public void removeNickel() {
-		nickels--;
-		value -= .05;
-	}
-	
-	public void removeDime() {
-		dimes--;
-		value -= .10;
-	}
-	
-	public void removeQuarter() {
-		quarters--;
-		value -= .25;
+	public void changeCoinStock(VMInput input, int amount) {
+		if(input.MONETARY_VALUE > 0) {
+			value += input.MONETARY_VALUE * amount;
+			MONEY_STOCK.put(input, MONEY_STOCK.getOrDefault(input, 0) + amount);
+		}
 	}
 }
